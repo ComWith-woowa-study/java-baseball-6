@@ -4,10 +4,14 @@ import java.util.List;
 
 public class Ball {
 
+    private static final int BALL_SIZE = 3;
     private static final int MIN = 1, MAX = 9;
     private final List<Integer> ball;
 
     public Ball(List<Integer> numbers) {
+        if (numbers == null || numbers.size() != BALL_SIZE) {
+            throw new IllegalArgumentException("공의 개수는 " + BALL_SIZE + "개여야 합니다.");
+        }
         if (!numbers.stream().allMatch(n -> n >= MIN && n <= MAX)){
             throw new IllegalArgumentException("모든 숫자는 " + MIN + "~" + MAX + " 사이여야 합니다.");
         }
