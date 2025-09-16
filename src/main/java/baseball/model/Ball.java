@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Ball {
 
-    private static final int BALL_SIZE = 3;
-    private static final int MIN = 1, MAX = 9;
+    public static final int BALL_SIZE = 3;
+    public static final int MIN = 1, MAX = 9;
     private final List<Integer> ball;
 
     public Ball(List<Integer> numbers) {
