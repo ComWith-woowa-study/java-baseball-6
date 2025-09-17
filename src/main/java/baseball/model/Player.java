@@ -8,7 +8,7 @@ import java.util.List;
 public class Player {
 
     public List<Integer> inputNumbers() {
-        System.out.println("숫자를 입해주세요 :");
+        System.out.print("숫자를 입해주세요 : ");
         String userBall = Console.readLine();
         if (userBall == null || userBall.isEmpty()) {
             throw new IllegalArgumentException("공이 없습니다.");
