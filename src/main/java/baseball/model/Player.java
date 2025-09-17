@@ -4,9 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
-public class InputView {
+public class Player {
 
     public List<Integer> inputNumbers() {
         System.out.println("숫자를 입해주세요 :");
