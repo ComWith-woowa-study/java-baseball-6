@@ -24,4 +24,7 @@ public class Ball {
     public List<Integer> getBall() {
         return ball;
     }
+    public Integer getBallIndex(int index) {
+        return ball.get(index);
+    }
 }
