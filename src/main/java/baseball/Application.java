@@ -1,7 +1,22 @@
 package baseball;
 
+import baseball.computer.Computer;
+import baseball.computer.Machine;
+import baseball.exception.GameRules;
+import baseball.mediator.DefaultGameMediator;
+import baseball.mediator.GameMediator;
+import baseball.player.Player;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        GameRules rules = new GameRules(3, 1, 9);
+        Player player = new Player(rules);
+        Machine computer = new Computer(rules);
+        GameMediator mediator = new DefaultGameMediator(rules, computer, player);
+
+        mediator.start();
     }
 }
+
