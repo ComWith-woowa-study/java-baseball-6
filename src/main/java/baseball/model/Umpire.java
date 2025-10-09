@@ -2,7 +2,7 @@ package baseball.model;
 
 public class Umpire {
 
-    public Result gameStart(Ball user, Ball computer) {
+    public Result referee(Ball user, Ball computer) {
 
         int strike = 0;
         int ball = 0;
@@ -10,7 +10,9 @@ public class Umpire {
         for (int i=0; Ball.BALL_SIZE > i; i++) {
             if (user.getBallIndex(i).equals(computer.getBallIndex(i))){
                 strike++;
-            } else if (computer.getBall().contains(user.getBallIndex(i))) {
+                continue;
+            }
+            if (computer.getBall().contains(user.getBallIndex(i))) {
                 ball++;
             }
         }
