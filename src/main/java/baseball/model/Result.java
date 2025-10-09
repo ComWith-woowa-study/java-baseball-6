@@ -11,24 +11,7 @@ public class Result {
         this.nothing = nothing;
     }
 
-    public int getStrike() {
-        return strike;
-    }
-    public int getBall() {
-        return ball;
-    }
-    public int getNothing() {
-        return nothing;
-    }
-
-    @Override
-    public String toString() {
-        if (strike == 0 && ball == 0) {
-            return "낫싱";
-        }
-        if (strike == 3 && ball == 0) {
-            return "3스트라이크";
-        }
-        return ball + "볼 " + strike + "스트라이크";
-    }
+    public int getStrike() {return strike;}
+    public int getBall() {return ball;}
+    public int getNothing() {return nothing;}
 }
