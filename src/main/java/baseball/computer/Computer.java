@@ -1,33 +1,26 @@
 package baseball.computer;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.generator.Generator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer implements Machine {
+import static baseball.generator.BasicGenerator.SIZE;
 
-    public static final int SIZE = 3;
-    public static final int MIN = 1;
-    public static final int MAX = 9;
+public class Computer {
 
-    // 선택한 임의의 수 3개
-    private final List<Integer> computer = new ArrayList<>();
+    private final Generator generator;
+    private List<Integer> computer = new ArrayList<>();
 
-    @Override
-    public List<Integer> generate() {
-        computer.clear();
-        while (computer.size() < SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-
-        return computer;
+    public Computer(Generator generator) {
+        this.generator = generator;
     }
 
-    @Override
+    public List<Integer> generate() {
+        this.computer = new ArrayList<>(generator.generate());
+        return List.copyOf(computer);
+    }
+
     public Score judge(List<Integer> guess) {
 
         int strike = 0;
@@ -42,7 +35,7 @@ public class Computer implements Machine {
             }
         }
 
-        return new Score(strike, ball);
+        return new Score(strike, ball, SIZE);
 
     }
 }

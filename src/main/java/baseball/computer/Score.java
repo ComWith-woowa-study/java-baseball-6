@@ -1,11 +1,9 @@
 package baseball.computer;
 
-import static baseball.computer.Computer.SIZE;
-
-public record Score(int strike, int ball) {
+public record Score(int strike, int ball, int size) {
 
     public boolean isWin() {
-        return strike == SIZE;
+        return strike == size;
     }
 
     public boolean isNothing() {
