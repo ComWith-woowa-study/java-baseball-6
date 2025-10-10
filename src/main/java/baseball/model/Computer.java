@@ -1,11 +1,11 @@
-package baseball.computer;
+package baseball.model;
 
 import baseball.generator.Generator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.generator.BasicGenerator.SIZE;
+import static baseball.model.GameConfig.SIZE;
 
 public class Computer {
 

@@ -5,11 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasicGenerator implements Generator {
+import static baseball.model.GameConfig.*;
 
-    public static final int SIZE = 3;
-    public static final int MIN = 1;
-    public static final int MAX = 9;
+public class BasicGenerator implements Generator {
 
     @Override
     public List<Integer> generate() {

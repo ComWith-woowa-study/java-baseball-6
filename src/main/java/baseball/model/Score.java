@@ -1,4 +1,4 @@
-package baseball.computer;
+package baseball.model;
 
 public record Score(int strike, int ball, int size) {
 
