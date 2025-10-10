@@ -3,12 +3,14 @@ package baseball.player;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
-import static baseball.computer.Computer.*;
+import static baseball.generator.BasicGenerator.*;
 
 public class Player {
     public static final int GO = 1;
     public static final int STOP = 2;
+
     private final List<Integer> input = new ArrayList<>();
+
     public List<Integer> getInput() {
         String line = Console.readLine();
         if (line == null || line.isEmpty()) {
@@ -30,6 +32,7 @@ public class Player {
             }
 
             int number = c - '0';
+
             if (number < MIN || number > MAX) {
                 throw new IllegalArgumentException(String.format("%d ~ %d 범위의 숫자만 입력할 수 있습니다!", MIN, MAX));
             }
@@ -43,12 +46,12 @@ public class Player {
         }
 
         return input;
-
     }
 
     public boolean getRestartOrStop() {
         String restartOrStop = Console.readLine();
         int number = Integer.parseInt(restartOrStop);
+
         if (restartOrStop.isEmpty()) {
             throw new IllegalArgumentException("게임 재개 여부를 입력해주세요!");
         }

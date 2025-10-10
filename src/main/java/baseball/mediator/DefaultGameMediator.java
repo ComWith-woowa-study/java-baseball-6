@@ -6,7 +6,7 @@ import baseball.player.Player;
 
 import java.util.List;
 
-import static baseball.computer.Computer.SIZE;
+import static baseball.generator.BasicGenerator.SIZE;
 import static baseball.player.Player.GO;
 import static baseball.player.Player.STOP;
 
