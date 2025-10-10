@@ -1,17 +1,19 @@
 package baseball;
 
-import baseball.computer.Computer;
+import baseball.model.Computer;
 import baseball.generator.BasicGenerator;
-import baseball.mediator.DefaultGameMediator;
-import baseball.player.Player;
+import baseball.controller.DefaultGameMediator;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Application {
 
     public static void main(String[] args) {
 
-        Player player = new Player();
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
         Computer computer = new Computer(new BasicGenerator());
-        DefaultGameMediator mediator = new DefaultGameMediator(computer, player);
+        DefaultGameMediator mediator = new DefaultGameMediator(computer, inputView, outputView);
 
         mediator.start();
     }
