@@ -1,6 +1,5 @@
 package baseball.computer;
 
-import baseball.exception.GameRules;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -8,55 +7,42 @@ import java.util.List;
 
 public class Computer implements Machine {
 
-    private final GameRules rules;
+    public static final int SIZE = 3;
+    public static final int MIN = 1;
+    public static final int MAX = 9;
 
     // 선택한 임의의 수 3개
-    private List<Integer> numbers;
-
-    public Computer(GameRules rules) {
-        this.rules = rules;
-    }
-
-    @Override
-    public void reset() {
-        numbers = generate();
-    }
+    private final List<Integer> computer = new ArrayList<>();
 
     @Override
     public List<Integer> generate() {
-
-        int size = rules.size();
-        int max = rules.max();
-        int min = rules.min();
-
-        List<Integer> computer = new ArrayList<>(size);
-        while (computer.size() < size) {
-            int randomNumber = Randoms.pickNumberInRange(min, max);
+        computer.clear();
+        while (computer.size() < SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
+
         return computer;
     }
 
     @Override
     public Score judge(List<Integer> guess) {
 
-        int size = rules.size();
-
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < SIZE; i++) {
             int g = guess.get(i);
-            if (g == numbers.get(i)) {
+            if (g == computer.get(i)) {
                 strike++;
 
-            } else if (numbers.contains(g)) {
+            } else if (computer.contains(g)) {
                 ball++;
             }
         }
 
-        return new Score(strike, ball, numbers.size());
+        return new Score(strike, ball);
 
     }
 }
