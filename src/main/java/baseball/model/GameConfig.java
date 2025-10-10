@@ -1,6 +1,6 @@
 package baseball.model;
 
-public class GameConfig {
+public abstract class GameConfig {
 
     public static final int SIZE = 3;
     public static final int MIN = 1;
