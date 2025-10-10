@@ -22,7 +22,6 @@ public class DefaultGameMediator {
         this.computer = computer;
         this.input = input;
         this.output = output;
-
     }
 
     public void start() {
@@ -41,7 +40,6 @@ public class DefaultGameMediator {
 
             if (score.isWin()) {
                 output.printResult(SIZE, GO, STOP);
-
                 if (getRestartOrStop()) {
                     computer.generate();
                 } else {
@@ -66,13 +64,11 @@ public class DefaultGameMediator {
 
         for (int i = 0; i < SIZE; i++) {
             char c = line.charAt(i);
-
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException( String.format("공백 없이 %d ~ %d 사이에 존재하는 숫자 중 %d자리를 입력해야 합니다!" , MIN, MAX, SIZE) );
             }
 
             int number = c - '0';
-
             if (number < MIN || number > MAX) {
                 throw new IllegalArgumentException(String.format("%d ~ %d 범위의 숫자만 입력할 수 있습니다!", MIN, MAX));
             }
@@ -82,9 +78,7 @@ public class DefaultGameMediator {
             }
 
             list.add(number);
-
         }
-
         return list;
     }
 
