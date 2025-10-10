@@ -1,33 +1,32 @@
 package baseball.mediator;
 
-import baseball.computer.Machine;
+import baseball.computer.Computer;
 import baseball.computer.Score;
-import baseball.exception.GameRules;
-import baseball.player.Participant;
+import baseball.player.Player;
 
 import java.util.List;
 
-public class DefaultGameMediator implements GameMediator {
+import static baseball.computer.Computer.SIZE;
+import static baseball.player.Player.GO;
+import static baseball.player.Player.STOP;
 
-    private final GameRules rules;
-    private final Machine machine;
-    private final Participant participant;
+public class DefaultGameMediator {
 
-    public DefaultGameMediator(GameRules rules, Machine machine, Participant participant) {
-        this.rules = rules;
-        this.machine = machine;
-        this.participant = participant;
+    private final Computer computer;
+    private final Player player;
+
+    public DefaultGameMediator(Computer computer, Player player) {
+        this.computer = computer;
+        this.player = player;
     }
 
-    @Override
     public void start() {
-        int size = rules.size();
-        machine.reset();
+        computer.generate();
         System.out.println("숫자 야구 게임을 시작합니다!");
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> guess = participant.inputDistinctDigits();
-            Score score = machine.judge(guess);
+            List<Integer> guess = player.getInput();
+            Score score = computer.judge(guess);
 
             if (score.isNothing()) {
                 System.out.println("낫싱");
@@ -36,22 +35,16 @@ public class DefaultGameMediator implements GameMediator {
             }
 
             if (score.isWin()) {
-                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", size);
+                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", SIZE);
+                System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n", GO, STOP);
 
-                if (restartOrExit()) {
-                    machine.reset();
-                    continue;
+                if (player.getRestartOrStop()) {
+                    computer.generate();
                 } else {
                     break;
                 }
             }
         }
-    }
-
-    @Override
-    public boolean restartOrExit() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
-        return participant.goOrStop();
     }
 
 }
